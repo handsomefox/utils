@@ -75,10 +75,11 @@ linters:
     - exportloopref
     - forcetypeassert
     - goconst
-    - gocritic
+    # gocritic
     - godot
     - goimports
     - gofmt
+    # gofumpt
     - gomnd
     - gosec
     - ifshort
@@ -90,7 +91,7 @@ linters:
     - nestif
     - nilerr
     - nilnil
-    - nlreturn
+    # nlreturn
     - noctx
     - nosprintfhostport
     - prealloc
@@ -101,8 +102,8 @@ linters:
     - thelper
     - tparallel
     - unconvert
-    - varnamelen
+    # varnamelen
     - wastedassign
     - whitespace
     - wrapcheck
-    - wsl
+    # wsl

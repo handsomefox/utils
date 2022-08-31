@@ -14,11 +14,11 @@ type Mutex[T any] struct {
 // MutexData is the actual data.
 // It is a separate struct in order for us to avoid copying mutexes.
 type MutexData[T any] struct {
-	mu  sync.Mutex
 	val T
+	mu  sync.Mutex
 }
 
-// New returns a new mutex ptr
+// New returns a new mutex ptr.
 func New[T any](data T) *Mutex[T] {
 	return &Mutex[T]{
 		mdata: &MutexData[T]{
@@ -28,27 +28,27 @@ func New[T any](data T) *Mutex[T] {
 	}
 }
 
-// Lock is the same as sync.Mutex.Lock()
+// Lock is the same as sync.Mutex.Lock().
 func (m *Mutex[T]) Lock() {
 	m.mdata.mu.Lock()
 }
 
-// Unlock is the same as sync.Mutex.Unlock()
+// Unlock is the same as sync.Mutex.Unlock().
 func (m *Mutex[T]) Unlock() {
 	m.mdata.mu.Unlock()
 }
 
-// TryLock is the same as sync.Mutex.TryLock()
+// TryLock is the same as sync.Mutex.TryLock().
 func (m *Mutex[T]) TryLock() bool {
 	return m.mdata.mu.TryLock()
 }
 
-// Ptr returns a pointer to internal data without locking
+// Ptr returns a pointer to internal data without locking.
 func (m *Mutex[T]) Ptr() *T {
 	return &m.mdata.val
 }
 
-// Data returns a copy of internal data with locking
+// Data returns a copy of internal data with locking.
 func (m *Mutex[T]) DataLocked() T {
 	m.Lock()
 	data := m.mdata.val
@@ -68,7 +68,7 @@ func (m *Mutex[T]) SetLocked(other T) {
 	m.Unlock()
 }
 
-// Set changes internal value without locking
+// Set changes internal value without locking.
 func (m *Mutex[T]) Set(other T) {
 	m.mdata.val = other
 }

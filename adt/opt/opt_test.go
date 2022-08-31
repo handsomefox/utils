@@ -96,7 +96,11 @@ func Test_Expect_Panic(t *testing.T) {
 			t.Errorf("The code should have paniced")
 		}
 
-		s := r.(string)
+		s, ok := r.(string)
+		if !ok {
+			t.Fatalf("no error string found")
+		}
+
 		if s != message {
 			t.Errorf("expected different message")
 		}
