@@ -1,9 +1,10 @@
 package mut_test
 
 import (
-	"mut"
 	"sync"
 	"testing"
+
+	"mut"
 )
 
 func TestNew(t *testing.T) {
@@ -82,7 +83,6 @@ func TestConcurrent(t *testing.T) {
 	if len(protected.Data()) != n {
 		t.Fatal("Something went wrong")
 	}
-
 }
 
 type exampleStruct struct {
