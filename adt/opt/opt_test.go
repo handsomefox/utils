@@ -91,8 +91,14 @@ func Test_Expect_Panic(t *testing.T) {
 	option := returnNoneOpt()
 	message := "Test_Expect"
 	defer func() {
-		if r := recover(); r == nil {
+		r := recover()
+		if r == nil {
 			t.Errorf("The code should have paniced")
+		}
+
+		s := r.(string)
+		if s != message {
+			t.Errorf("expected different message")
 		}
 	}()
 
