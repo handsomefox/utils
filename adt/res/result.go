@@ -10,15 +10,15 @@ const (
 )
 
 type Result[T any] struct {
-	val T
-	err error
+	value T
+	err   error
 }
 
 // WithValue creates a new result with nil error and the provided value.
 func WithValue[T any](value T) Result[T] {
 	return Result[T]{
-		val: value,
-		err: nil,
+		value: value,
+		err:   nil,
 	}
 }
 
@@ -36,7 +36,7 @@ func (result Result[T]) Error() error {
 
 // Value returns the value under the result.
 func (result Result[T]) Value() T {
-	return result.val
+	return result.value
 }
 
 // Unwrap panics if the result has an error, or returns the value.
@@ -44,7 +44,7 @@ func (result Result[T]) Unwrap() T {
 	if result.err != nil {
 		panic(result.err)
 	}
-	return result.val
+	return result.value
 }
 
 // ValueOr returns the result value if it has one, or returns the Or value.
@@ -52,7 +52,7 @@ func (result Result[T]) ValueOr(or T) T {
 	if result.err != nil {
 		return or
 	}
-	return result.val
+	return result.value
 }
 
 // Expect panics with the given message if the resulthas no value, or returns the value.
@@ -60,7 +60,7 @@ func (result Result[T]) Expect(message string) T {
 	if result.err != nil {
 		panic(message)
 	}
-	return result.val
+	return result.value
 }
 
 // IsError indicates whether the result has an error.

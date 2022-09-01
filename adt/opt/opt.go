@@ -10,15 +10,15 @@ const (
 )
 
 type Option[T any] struct {
-	val T
-	typ Type
+	value T
+	typ   Type
 }
 
 // WithValue creates a new option with type Some and the provided value.
 func WithValue[T any](value T) Option[T] {
 	return Option[T]{
-		val: value,
-		typ: Some,
+		value: value,
+		typ:   Some,
 	}
 }
 
@@ -36,7 +36,7 @@ func (option Option[T]) Type() Type {
 
 // Value returns the value under the option.
 func (option Option[T]) Value() T {
-	return option.val
+	return option.value
 }
 
 // Unwrap panics if the option has no value, or returns the value.
@@ -44,7 +44,7 @@ func (option Option[T]) Unwrap() T {
 	if option.typ == None {
 		panic("Unwrap() called on empty option")
 	}
-	return option.val
+	return option.value
 }
 
 // ValueOr returns the option value if it has one, or returns the Or value.
@@ -52,7 +52,7 @@ func (option Option[T]) ValueOr(or T) T {
 	if option.typ == None {
 		return or
 	}
-	return option.val
+	return option.value
 }
 
 // Expect panics with the given message if the option has no value, or returns the value.
@@ -60,7 +60,7 @@ func (option Option[T]) Expect(message string) T {
 	if option.typ == None {
 		panic(message)
 	}
-	return option.val
+	return option.value
 }
 
 // HasValue indicates whether the option has a value.
