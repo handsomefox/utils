@@ -10,60 +10,60 @@ const (
 )
 
 type Result[T any] struct {
-	Val T
-	Err error
+	val T
+	err error
 }
 
 // WithValue creates a new result with nil error and the provided value.
 func WithValue[T any](value T) Result[T] {
 	return Result[T]{
-		Val: value,
-		Err: nil,
+		val: value,
+		err: nil,
 	}
 }
 
 // WithError is a shortcut for creating Result with (or without) an error.
 func WithError[T any](err error) Result[T] {
 	return Result[T]{
-		Err: err,
+		err: err,
 	}
 }
 
 // Error returns the result err.
-func (res Result[T]) Error() error {
-	return res.Err
+func (result Result[T]) Error() error {
+	return result.err
 }
 
 // Value returns the value under the result.
-func (res Result[T]) Value() T {
-	return res.Val
+func (result Result[T]) Value() T {
+	return result.val
 }
 
 // Unwrap panics if the result has an error, or returns the value.
-func (res Result[T]) Unwrap() T {
-	if res.Err != nil {
-		panic(res.Err)
+func (result Result[T]) Unwrap() T {
+	if result.err != nil {
+		panic(result.err)
 	}
-	return res.Val
+	return result.val
 }
 
 // ValueOr returns the result value if it has one, or returns the Or value.
-func (res Result[T]) ValueOr(or T) T {
-	if res.Err != nil {
+func (result Result[T]) ValueOr(or T) T {
+	if result.err != nil {
 		return or
 	}
-	return res.Val
+	return result.val
 }
 
 // Expect panics with the given message if the resulthas no value, or returns the value.
-func (res Result[T]) Expect(message string) T {
-	if res.Err != nil {
+func (result Result[T]) Expect(message string) T {
+	if result.err != nil {
 		panic(message)
 	}
-	return res.Val
+	return result.val
 }
 
 // IsError indicates whether the result has an error.
-func (res Result[T]) IsError() bool {
-	return res.Err != nil
+func (result Result[T]) IsError() bool {
+	return result.err != nil
 }
