@@ -4,7 +4,7 @@ package res
 type Type uint8
 
 const (
-	_ = iota
+	_ Type = iota
 	Value
 	Error
 )

@@ -4,7 +4,7 @@ package opt
 type Type uint8
 
 const (
-	_ = iota
+	_ Type = iota
 	None
 	Some
 )
