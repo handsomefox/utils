@@ -1,4 +1,4 @@
-// package res tries to mimick the result data type from rust.
+// package res tries to mimic the result data type from rust.
 package res
 
 type Type uint8
@@ -55,7 +55,7 @@ func (result Result[T]) ValueOr(or T) T {
 	return result.value
 }
 
-// Expect panics with the given message if the resulthas no value, or returns the value.
+// Expect panics with the given message if the result has no value, or returns the value.
 func (result Result[T]) Expect(message string) T {
 	if result.err != nil {
 		panic(message)

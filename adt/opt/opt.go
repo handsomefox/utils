@@ -1,4 +1,4 @@
-// package option tries to mimick the option data type from rust.
+// package option tries to mimic the option data type from rust.
 package opt
 
 type Type uint8

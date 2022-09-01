@@ -52,7 +52,7 @@ func Test_Unwrap_NoPanic(t *testing.T) {
 
 	defer func() {
 		if r := recover(); r != nil {
-			t.Errorf("The code should not have paniced")
+			t.Errorf("The code should not have panicked")
 		}
 	}()
 
@@ -64,7 +64,7 @@ func Test_Unwrap_Panic(t *testing.T) {
 
 	defer func() {
 		if r := recover(); r == nil {
-			t.Errorf("The code should have paniced")
+			t.Errorf("The code should have panicked")
 		}
 	}()
 
@@ -93,7 +93,7 @@ func Test_Expect_Panic(t *testing.T) {
 	defer func() {
 		r := recover()
 		if r == nil {
-			t.Errorf("The code should have paniced")
+			t.Errorf("The code should have panicked")
 		}
 
 		s, ok := r.(string)
@@ -114,7 +114,7 @@ func Test_Expect_NoPanic(t *testing.T) {
 	message := "Test_Expect"
 	defer func() {
 		if r := recover(); r != nil {
-			t.Errorf("The code should not have paniced")
+			t.Errorf("The code should not have panicked")
 		}
 	}()
 
