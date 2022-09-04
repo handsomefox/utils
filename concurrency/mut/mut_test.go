@@ -4,7 +4,7 @@ import (
 	"sync"
 	"testing"
 
-	"mut"
+	"utils/concurrency/mut"
 )
 
 func TestNew(t *testing.T) {

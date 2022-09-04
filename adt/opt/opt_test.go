@@ -3,7 +3,7 @@ package opt_test
 import (
 	"testing"
 
-	"adt/opt"
+	"utils/adt/opt"
 )
 
 func returnNoneOpt() opt.Option[int] {

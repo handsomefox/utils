@@ -4,7 +4,7 @@ import (
 	"errors"
 	"testing"
 
-	"adt/res"
+	"utils/adt/res"
 )
 
 func returnErrRes() res.Result[int] {
